@@ -1,0 +1,7 @@
+name "ve"
+description "A Voxel Engine"
+authors "birthggd"
+copyright "Copyright © 2020, birthggd"
+license "MIT"
+dependency "bindbc-opengl" version="~>0.13.0"
+dependency "bindbc-sdl" version="~>0.19.2"
