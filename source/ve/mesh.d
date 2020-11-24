@@ -2,6 +2,7 @@ module ve.mesh;
 
 struct Mesh
 {
+    uint numVertex;
     float[] vertexPositions;
-    float[] textureCoords;
+    float[] textureCoordinates;
 }
