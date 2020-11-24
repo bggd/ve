@@ -2,13 +2,21 @@ module ve.chunk;
 
 import ve.block;
 
-struct Chunk(T, uint X, uint Y, uint Z)
+class Chunk(T)
 {
-    uint x = X;
-    uint y = Y;
-    uint z = Z;
+    uint x;
+    uint y;
+    uint z;
 
-    Block!T[X][Y][Z] blocks;
+    Block!(T)[][][] blocks;
+
+    this(uint width, uint height, uint depth)
+    {
+        this.x = width;
+        this.y = height;
+        this.z = depth;
+        this.blocks = new Block!(T)[][][](width, height, depth);
+    }
 
     void setBlock(uint x, uint y, uint z, Block!T block)
     {
@@ -23,10 +31,10 @@ struct Chunk(T, uint X, uint Y, uint Z)
 
 unittest
 {
-    Chunk!(int, 16, 16, 16) c;
-    assert(c.x == 16);
-    assert(c.y == 16);
-    assert(c.z == 16);
+    auto c = new Chunk!int(256, 256, 256);
+    assert(c.x == 256);
+    assert(c.y == 256);
+    assert(c.z == 256);
 
     auto b = c.getBlock(0, 0, 0);
     assert(b.type == 0);
