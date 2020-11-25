@@ -1,6 +1,7 @@
 module ve.main_loop;
 
 import core.sys.windows.windows;
+import bindbc.opengl;
 
 pragma(lib, "user32.lib");
 pragma(lib, "gdi32.lib");
@@ -144,6 +145,9 @@ void veCreateOpenGLContext()
     wglSwapIntervalEXT = cast(pwglSwapIntervalEXT) wglGetProcAddress("wglSwapIntervalEXT");
     assert(wglSwapIntervalEXT);
     wglSwapIntervalEXT(1);
+
+    GLSupport retVal = loadOpenGL();
+    assert(retVal);
 }
 
 void veDestroyOpenGLContext()
