@@ -146,8 +146,8 @@ void veCreateOpenGLContext()
     assert(wglSwapIntervalEXT);
     wglSwapIntervalEXT(1);
 
-    GLSupport retVal = loadOpenGL();
-    assert(retVal);
+    loadOpenGL();
+    assert(isOpenGLLoaded());
 }
 
 void veDestroyOpenGLContext()
