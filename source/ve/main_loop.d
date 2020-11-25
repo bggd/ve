@@ -8,6 +8,14 @@ pragma(lib, "opengl32.lib");
 
 class MainLoop
 {
+    this()
+    {
+    }
+
+    ~this()
+    {
+    }
+
     void onInit()
     {
     }
@@ -55,6 +63,11 @@ void veRun(T)()
 
     veDestroyOpenGLContext();
     veDestroyWindow();
+}
+
+void veClose()
+{
+    gDone = true;
 }
 
 private:
