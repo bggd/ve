@@ -130,6 +130,7 @@ void veDestroyOpenGLContext()
 {
     wglMakeCurrent(hDC, null);
     wglDeleteContext(hRC);
+    ReleaseDC(hwnd, hDC);
 }
 
 extern (Windows) LRESULT WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam) nothrow @system
