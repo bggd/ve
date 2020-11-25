@@ -66,6 +66,9 @@ __gshared HGLRC hRC;
 __gshared MainLoop gLoop;
 __gshared bool gDone;
 
+alias pwglSwapIntervalEXT = BOOL function(int);
+__gshared pwglSwapIntervalEXT wglSwapIntervalEXT;
+
 void veCreateWindow()
 {
     hInstance = GetModuleHandle(null);
@@ -124,6 +127,10 @@ void veCreateOpenGLContext()
     assert(hRC);
 
     wglMakeCurrent(hDC, hRC);
+
+    wglSwapIntervalEXT = cast(pwglSwapIntervalEXT) wglGetProcAddress("wglSwapIntervalEXT");
+    assert(wglSwapIntervalEXT);
+    wglSwapIntervalEXT(1);
 }
 
 void veDestroyOpenGLContext()
